@@ -36,7 +36,7 @@ for x in dataframe.index:
 
 minn = float('inf')
 mina = 0.0
-for a in range(2000000,3000000):
+for a in range(1000000,10000000):
     a0 = float(a/100000000000.0)
     sq = test(demand, facility, a0)
     if sq < minn:

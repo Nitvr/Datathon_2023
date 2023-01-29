@@ -61,22 +61,22 @@ us_state_to_abbrev = {
     "United States Minor Outlying Islands": "UM",
     "U.S. Virgin Islands": "VI",
 }
-df = pd.read_csv('Facility_distribution.csv')
-df = df.head(51)
+df = pd.read_csv('Demand_2020.csv')
+df = df.tail(51)
 
 state_list = []
 for x in df.index:
     state_list.append(us_state_to_abbrev[df.loc[x,"Name"]])
 fig = go.Figure(data=go.Choropleth(
     locations=state_list, # Spatial coordinates
-    z = df['Facility Count'].astype(float), # Data to be color-coded
+    z = df['Demand'].astype(float), # Data to be color-coded
     locationmode = 'USA-states', # set of locations match entries in `locations`
     colorscale = 'Reds',
     colorbar_title = "Facility Count",
 ))
 
 fig.update_layout(
-    title_text = '2019 facility distribution',
+    title_text = '2020 facility demand distribution',
     geo_scope='usa', # limite map scope to USA
 )
 
